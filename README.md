@@ -58,6 +58,17 @@ cat: /tmp/screenshot.png: No such file or directory
 
 ````
 
+## Clipboard
+````bash
+docker build -t clipboard clipboard
+echo somedata | xclip -i 
+docker run --rm  -e "DISPLAY:$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix -u 1000 -it clipboard
+````
+
+|Test| Xorg	| Wayland | 
+|----|-------|---------|
+| read clipboard  | :thumbsdown: captured | untested| 
+| write to clipboard | untested | untested| 
+
 ## Things to test
 * Sending KeyPress events. (Trying to break out by sending keyboard events to open a terminal and run code , Rubber Ducky like) 
-* Clipboard (dump clipboard entries and/or overwrite them) 
