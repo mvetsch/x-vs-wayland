@@ -57,3 +57,7 @@ compositor doesn't support wlr-screencopy-unstable-v1
 cat: /tmp/screenshot.png: No such file or directory
 
 ````
+
+## Things to test
+* Sending KeyPress events. (Trying to break out by sending keyboard events to open a terminal and run code , Rubber Ducky like) 
+* Clipboard (dump clipboard entries and/or overwrite them) 
