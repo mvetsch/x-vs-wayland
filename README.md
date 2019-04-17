@@ -43,5 +43,17 @@ failed to create display
 cat: /tmp/screenshot.png: No such file or directory
 ````
 
+It seems that mounting XDG runtime dir changes the error message, but grim is still not able to do a screenshot
 
+````bash
+[vetsch@euklid x-vs-wayland]$ docker run --rm  -e "DISPLAY:$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000:/run/user/1000 -u 1000 -it  screenshot
+X Error of failed request:  BadMatch (invalid parameter attributes)
+  Major opcode of failed request:  73 (X_GetImage)
+  Serial number of failed request:  23
+  Current serial number in output stream:  23
+wl_registry@2: error 0: invalid version for global wl_output (12): have 2, wanted 3
+warning: zxdg_output_manager_v1 isn't available, guessing the output layout
+compositor doesn't support wlr-screencopy-unstable-v1
+cat: /tmp/screenshot.png: No such file or directory
 
+````
