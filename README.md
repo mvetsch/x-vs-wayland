@@ -1,5 +1,18 @@
 # X vs Wayland
 
+To restrict the attack surface for all the software I run on my computer, I try to lock them up in containers. 
+Unfortunately, when they have a GUI I have to mount the Xorg socket into the container. Access to that socket allows allows application to 
+* Log Keyboard Events
+* Create screenshots of all displays
+* Access the clipboard
+* (Unsure) send keyboard events to other windows. 
+
+Wayland is an alternative Xorg thing. I tried to figure out if those things are more restrictive there. 
+I compared the behaviour on two different devices: 
+* Fedora -> Xorg -> i3wm
+* Fedora -> Wayland -> sway
+
+I did not check if there is any configuration option for Wayland nor did I read any documentation. 
 
 ## Keylogger
 ````bash
