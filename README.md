@@ -1,5 +1,6 @@
 # X vs Wayland
 
+
 ## Keylogger
 ````bash
 docker build -t keylogger keylogger
@@ -62,13 +63,21 @@ cat: /tmp/screenshot.png: No such file or directory
 ````bash
 docker build -t clipboard clipboard
 echo somedata | xclip -i 
+wl-copy "sway is an i3-compatible Wayland compositor."
 docker run --rm  -e "DISPLAY:$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix -u 1000 -it clipboard
 ````
 
 |Test| Xorg	| Wayland | 
 |----|-------|---------|
-| read clipboard  | :thumbsdown: captured | untested| 
+| read clipboard  | :thumbsdown: captured | :thumbsdown: captured | 
 | write to clipboard | untested | untested| 
+
+Works perfectly on sway: 
+````bash
+docker run --rm  -e "DISPLAY:$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix -u 1000 -it  clipboard
+sway is an i3-compatible Wayland compositor.
+````
+
 
 ## Things to test
 * Sending KeyPress events. (Trying to break out by sending keyboard events to open a terminal and run code , Rubber Ducky like) 
